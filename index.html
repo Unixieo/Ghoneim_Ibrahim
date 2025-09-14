@@ -134,6 +134,16 @@
         .hero-right{display:flex;flex-direction:column;gap:12px;align-items:center}
         .hero-photo{width:360px;height:360px;border-radius:12px;background:linear-gradient(135deg,var(--fe-red),var(--fe-accent));display:flex;align-items:center;justify-content:center;color:white;font-size:48px}
         .hero-photo.small{width:160px;height:120px;border-radius:10px}
+        /* Ensure the hero image scales responsively on smaller screens.  Without this rule the fixed
+           width specified on the <img> element can cause overflow when the layout stacks into a single
+           column.  By constraining the image to the available width and preserving its aspect ratio we
+           avoid horizontal scrolling or clipping on devices around 450px wide. */
+        .hero-right img{
+            max-width:100%;
+            height:auto;
+            display:block;
+            margin:0 auto;
+        }
 
         /* sections */
         section{padding:72px 20px}
@@ -170,7 +180,7 @@
             .services-grid{grid-template-columns:repeat(2,1fr)}
         }
 
-        @media (max-width:600px){
+        @media (max-width:500px){
             /* Adjust navigation layout on small screens. Hide the full nav links and show a menu toggle. */
             nav{
                 /* On very small screens the nav spans the full width with small horizontal margins. */
@@ -181,6 +191,7 @@
                 max-width:calc(100% - 24px);
                 padding:10px 14px;
             }
+        
             /* Show mobile-only elements like the menu toggle */
             .mobile-only{display:block;}
             /* Hide nav menu by default on small screens */
@@ -831,23 +842,27 @@
     <div class="container">
         <div style="display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap">
             <div>
-                <strong>عن Ghoniem Ibrahim</strong>
-                <p style="max-width:320px">شريكك الموثوق في سلامة الحريق والحماية المدنية مع أكثر من 10 سنوات من الخبرة.</p>
+                <!-- Footer section about the expert. Use data-i18n attributes so that language toggling correctly translates this content. -->
+                <strong data-i18n="footer.about">عن Ghoniem Ibrahim</strong>
+                <p style="max-width:320px" data-i18n="footer.about.desc">شريكك الموثوق في سلامة الحريق والحماية المدنية مع أكثر من 10 سنوات من الخبرة.</p>
             </div>
             <div>
-                <strong>روابط سريعة</strong>
+                <!-- Quick links header; also translated via data-i18n. -->
+                <strong data-i18n="footer.links">روابط سريعة</strong>
                 <div style="display:flex;flex-direction:column;gap:6px;margin-top:8px">
-                    <a href="#services" style="color:inherit;text-decoration:none">الخدمات</a>
-                    <a href="#portfolio" style="color:inherit;text-decoration:none">الأعمال</a>
-                    <a href="#contact" style="color:inherit;text-decoration:none">اتصل بنا</a>
+                    <a href="#services" style="color:inherit;text-decoration:none" data-i18n="nav.services">الخدمات</a>
+                    <a href="#portfolio" style="color:inherit;text-decoration:none" data-i18n="nav.portfolio">الأعمال</a>
+                    <a href="#contact" style="color:inherit;text-decoration:none" data-i18n="nav.contact">اتصل بنا</a>
                 </div>
             </div>
             <div>
-                <strong>اتصل</strong>
+                <!-- Contact header for footer; also translatable -->
+                <strong data-i18n="footer.contact">اتصل</strong>
                 <p>📧 <a href="mailto:ghoniemghoneim2013@gmail.com" style="color:inherit;text-decoration:none">ghoniemghoneim2013@gmail.com</a></p>
             </div>
         </div>
-        <div style="text-align:center;margin-top:20px;opacity:0.7">© 2025 Ghoniem Ibrahim. جميع الحقوق محفوظة.</div>
+        <!-- Copyright notice for footer; use i18n key for translation. -->
+        <div style="text-align:center;margin-top:20px;opacity:0.7" data-i18n="footer.copyright">© 2025 Ghoniem Ibrahim. جميع الحقوق محفوظة.</div>
     </div>
 </footer>
 
@@ -944,7 +959,13 @@
                 'gallery.image2.alt':'Fire safety system installation project 2',
                 'gallery.image3.alt':'Fire safety system installation project 3',
                 'gallery.image4.alt':'Fire safety system installation project 4',
-                'gallery.image5.alt':'Fire safety system installation project 5'
+                'gallery.image5.alt':'Fire safety system installation project 5',
+                // Footer translations (English)
+                'footer.about':'About Ghoniem Ibrahim',
+                'footer.about.desc':'Your trusted partner in fire safety and civil protection with over 10 years of experience.',
+                'footer.links':'Quick Links',
+                'footer.contact':'Contact',
+                'footer.copyright':'© 2025 Ghoniem Ibrahim. All rights reserved.'
             },
             ar: {
                 'brand.name':'غنيم إبراهيم',
@@ -1035,7 +1056,13 @@
                 'gallery.image2.alt':'مشروع تركيب نظام سلامة الحريق 2',
                 'gallery.image3.alt':'مشروع تركيب نظام سلامة الحريق 3',
                 'gallery.image4.alt':'مشروع تركيب نظام سلامة الحريق 4',
-                'gallery.image5.alt':'مشروع تركيب نظام سلامة الحريق 5'
+                'gallery.image5.alt':'مشروع تركيب نظام سلامة الحريق 5',
+                // Footer translations (Arabic)
+                'footer.about':'عن Ghoniem Ibrahim',
+                'footer.about.desc':'شريكك الموثوق في سلامة الحريق والحماية المدنية مع أكثر من 10 سنوات من الخبرة.',
+                'footer.links':'روابط سريعة',
+                'footer.contact':'اتصل',
+                'footer.copyright':'© 2025 Ghoniem Ibrahim. جميع الحقوق محفوظة.'
             }
         };
 
